@@ -7,7 +7,7 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   console.log(pathname, '***pathName')
 
-  console.log(token, 'ini token')
+  console.log(token, '****token')
 
   if (!token && pathname !== "/login") {
     return NextResponse.redirect(new URL("/login", request.url));

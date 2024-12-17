@@ -1,4 +1,4 @@
-export { default } from '@/components/pages/Login/Login'
+export { default } from '@/components/pages/Login'
 
 
 
