@@ -3,7 +3,6 @@ import React from "react";
 
 const Button = (props: ButtonProps) => {
   const { title, disabled, isLoading, ...rest } = props;
-  console.log(disabled, "testing");
   return (
     <button
       {...rest}

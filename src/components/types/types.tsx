@@ -14,9 +14,12 @@ export type TextFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
   prefixIcon?: string;
   suffixIcon?: string;
   id: string;
+  iserrors?: boolean;
+  errorsmsg?: string;
+  ref?: React.Ref<HTMLInputElement | null>;
 };
 
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &  {
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   title: string;
-  isLoading?: boolean
-}
+  isLoading?: boolean;
+};
