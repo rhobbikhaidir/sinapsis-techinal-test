@@ -2,7 +2,7 @@ import { Children } from "@/components/types/types";
 import { Geist, Geist_Mono } from "next/font/google";
 import AppProvider from "./AppProvider";
 import "./style.css";
-
+import Header from "@/components/shared/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,7 +20,10 @@ const AppLayout = (props: Children) => {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AppProvider>{props.children}</AppProvider>
+        <AppProvider>
+          <Header />
+          {props.children}
+        </AppProvider>
       </body>
     </html>
   );

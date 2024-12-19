@@ -23,3 +23,8 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   title: string;
   isLoading?: boolean;
 };
+
+export type LoginPartials = {
+  username: string;
+  token: string;
+};
