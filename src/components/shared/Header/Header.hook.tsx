@@ -28,6 +28,7 @@ const useHeader = () => {
   });
 
   const onLogut = async () => {
+    console.log("run");
     const result = await Swal.fire({
       title: "Are you sure?",
       text: "Do you want to Logout?",
@@ -39,6 +40,7 @@ const useHeader = () => {
     });
 
     if (result.isConfirmed) {
+      setTheme("light");
       mutate();
     }
     if (result.isDismissed) {

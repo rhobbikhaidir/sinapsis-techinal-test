@@ -17,6 +17,7 @@ export type TextFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
   iserrors?: boolean;
   errorsmsg?: string;
   ref?: React.Ref<HTMLInputElement | null>;
+  isMandatory?: boolean;
 };
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -34,10 +35,26 @@ export type TablePartials = {
   per_page: number;
 };
 
-
 export type dataTableProps = {
   body: string;
   id: number;
   title: string;
   user_id: number;
+};
+
+export type TextFieldAreaProps =
+  React.InputHTMLAttributes<HTMLTextAreaElement> & {
+    label: string;
+    id: string;
+    iserrors?: boolean;
+    errorsmsg?: string;
+    ref?: React.Ref<HTMLTextAreaElement | null>;
+    isMandatory?: boolean;
+  };
+
+export type CreateEditPartials = {
+  title: string;
+  body: string;
+  user_id?: number;
+  id?: number
 };

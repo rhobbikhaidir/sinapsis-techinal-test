@@ -9,7 +9,7 @@ const Header = () => {
   const { user, onLogut, theme, setTheme } = useHeader();
   if (path === "/login") return null;
   return (
-    <div className="w-full border-b-2 dark:border-b-gray-700  shadow-sm flex flex-row p-2 justify-between fixed items-center dark:bg-ireng">
+    <div className="w-full border-b-2 dark:border-b-gray-700  shadow-sm flex flex-row p-2 justify-between fixed items-center dark:bg-ireng bg-white">
       <p className="text-gray-600 text-sm dark:text-primary">Welcome, {user}</p>
       <div className="flex flex-row gap-2">
         <button

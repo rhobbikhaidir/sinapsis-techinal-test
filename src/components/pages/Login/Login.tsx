@@ -27,6 +27,7 @@ const Login = () => {
             render={({ field: { ref, ...field }, fieldState: { error } }) => (
               <TextField
                 ref={ref}
+                isMandatory
                 {...field}
                 id={"username"}
                 label="Username"
@@ -42,6 +43,7 @@ const Login = () => {
                 ref={ref}
                 {...field}
                 id={"token"}
+                isMandatory
                 label="Token"
                 type="password"
                 errorsmsg={error ? error.message : ""}
