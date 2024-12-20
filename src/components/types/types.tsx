@@ -28,3 +28,16 @@ export type LoginPartials = {
   username: string;
   token: string;
 };
+
+export type TablePartials = {
+  page: number;
+  per_page: number;
+};
+
+
+export type dataTableProps = {
+  body: string;
+  id: number;
+  title: string;
+  user_id: number;
+};

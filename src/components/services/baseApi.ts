@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useMutation } from "@tanstack/react-query";
+import { keepPreviousData, useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { TablePartials } from "../types/types";
+
+const url = 'https://gorest.co.in/public/v2'
 
 export const useLoginGorest = ({
   onSuccess = () => {},
@@ -50,4 +53,26 @@ export const useLogoutGorest = ({
     },
   });
   return mutation;
+};
+
+
+export const useGetListTable = (
+  payload: TablePartials,
+) => {
+  const query = useQuery(
+    {
+      placeholderData: keepPreviousData,
+      queryFn: async () => {
+        const res = await axios.get(`${url}/posts`);
+        console.log(res, 'response dari useQuery')
+        return res.data;
+      },
+      queryKey: [
+        'list-table',
+        payload
+      ],
+    },
+  );
+
+  return query;
 };

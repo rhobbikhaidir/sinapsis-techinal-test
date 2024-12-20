@@ -11,6 +11,9 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        // ireng: '#080814',
+        ireng: '#282830',
+        primary: '#fbfbfe'
       },
     },
   },

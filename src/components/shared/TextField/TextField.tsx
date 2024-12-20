@@ -18,6 +18,7 @@ const TextField = (props: TextFieldProps) => {
       )}
       <input
         ref={ref}
+        id={id}
         type={type ?? "text"}
         {...res}
         className={`${

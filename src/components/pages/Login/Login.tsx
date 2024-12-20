@@ -50,6 +50,7 @@ const Login = () => {
           />
           <div className="flex flex-row justify-end items-end gap-2">
             <Button
+              id="btn-login"
               disabled={!isValid}
               type="submit"
               title="Login"
