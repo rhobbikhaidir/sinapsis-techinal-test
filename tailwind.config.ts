@@ -15,5 +15,5 @@ export default {
     },
   },
   plugins: [],
-  darkMode: 'false',
+  darkMode: 'class',
 } satisfies Config;

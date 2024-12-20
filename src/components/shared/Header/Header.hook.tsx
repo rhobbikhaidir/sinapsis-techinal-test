@@ -1,10 +1,12 @@
 import { useLogoutGorest } from "@/components/services/baseApi";
+import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const useHeader = () => {
   const [user, setUser] = useState<string | null>("");
+  const { theme, setTheme } = useTheme();
   const router = useRouter();
 
   useEffect(() => {
@@ -43,7 +45,7 @@ const useHeader = () => {
       Swal.close();
     }
   };
-  return { user, onLogut };
+  return { user, onLogut, theme, setTheme };
 };
 
 export default useHeader;
