@@ -54,6 +54,7 @@ const CreateEdit = () => {
         </div>
         <div className="flex flex-row justify-end">
           <Button
+            id="save"
             title="Save"
             disabled={!isValid}
             isLoading={isLoading || isLoadingEdit}

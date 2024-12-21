@@ -22,10 +22,9 @@ const useHeader = () => {
       localStorage.clear();
       router.replace("/login");
     },
-    onError: () => {
-      console.log("ini errorr");
-    },
   });
+
+  const gotoHome = () => router.replace("/");
 
   const onLogut = async () => {
     console.log("run");
@@ -47,7 +46,7 @@ const useHeader = () => {
       Swal.close();
     }
   };
-  return { user, onLogut, theme, setTheme };
+  return { user, onLogut, theme, setTheme, gotoHome };
 };
 
 export default useHeader;

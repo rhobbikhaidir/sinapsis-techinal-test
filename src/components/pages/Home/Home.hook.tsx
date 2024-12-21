@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 const useHome = () => {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
+  const [tempTitle, setTempTitle] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
   const totalPages = 5;
   const {
     data,
@@ -15,7 +17,19 @@ const useHome = () => {
   } = useGetListTable({
     page: currentPage,
     per_page: 10,
+    title,
   });
+
+  const onChangeTitle = (val: string) => {
+    setCurrentPage(1);
+    setTempTitle(val);
+  };
+
+  const onFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const val = tempTitle?.trim()
+    setTitle(val);
+  };
 
   const { mutate: onDelete } = useDeleteData({
     onSuccess: async () => {
@@ -47,7 +61,7 @@ const useHome = () => {
 
   const gotoDetail = (id: number) => {
     router.push(`/detail/${id}`);
-  }
+  };
 
   const handlePageChange = (page: number) => {
     if (isLoading) return;
@@ -88,7 +102,10 @@ const useHome = () => {
     gotoCreate,
     gotoEdit,
     handleDelete,
-    gotoDetail
+    gotoDetail,
+    onChangeTitle,
+    onFilter,
+    tempTitle,
   };
 };
 

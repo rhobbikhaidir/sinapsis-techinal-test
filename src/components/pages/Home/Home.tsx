@@ -19,13 +19,43 @@ const Home = () => {
     gotoCreate,
     gotoEdit,
     handleDelete,
-    gotoDetail
+    gotoDetail,
+    onFilter,
+    tempTitle,
+    onChangeTitle,
   } = useHome();
   return (
     <div className=" min-h-screen p-20 gap-16   dark:bg-ireng">
       <main className="flex flex-col gap-2 row-start-2 items-center sm:items-start">
-        <div className="flex flex-row w-full items-end justify-end">
-          <Button title="Add New" onClick={gotoCreate} />
+        <div className="flex flex-row w-full items-end justify-between">
+          <form onSubmit={onFilter}>
+            <label
+              htmlFor="default-search"
+              className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+            >
+              Search
+            </label>
+            <div className="relative">
+              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <Icon icon="search" />
+              </div>
+              <input
+                value={tempTitle}
+                onChange={(e) => onChangeTitle(e.target.value)}
+                type="search"
+                id="default-search"
+                className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Search Title"
+              />
+              <button
+                type="submit"
+                className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+          <Button id="add-new" title="Add New" onClick={gotoCreate} />
         </div>
         {isLoading && <Loading />}
 
@@ -66,13 +96,22 @@ const Home = () => {
                       </td>
                       <td className="px-6 py-4 border-r dark:border-r-gray-600 dark:text-white">
                         <div className="flex flex-row gap-2">
-                        <button onClick={gotoDetail.bind(null, el.id)}>
+                          <button
+                            onClick={gotoDetail.bind(null, el.id)}
+                            id="detail"
+                          >
                             <Icon icon="detail" size="18px" />
                           </button>
-                          <button onClick={gotoEdit.bind(null, el.id)}>
+                          <button
+                            onClick={gotoEdit.bind(null, el.id)}
+                            id="edit"
+                          >
                             <Icon icon="edit" size="18px" />
                           </button>
-                          <button onClick={() => handleDelete(el.id, el.title)}>
+                          <button
+                            onClick={() => handleDelete(el.id, el.title)}
+                            id="delete"
+                          >
                             <Icon icon="delete" size="18px" />
                           </button>
                         </div>

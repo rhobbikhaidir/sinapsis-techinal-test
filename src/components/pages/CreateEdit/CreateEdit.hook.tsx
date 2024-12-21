@@ -92,7 +92,6 @@ const useCreateEdit = () => {
         body: detailData?.body,
         title: detailData.title
       });
-      console.log("masuk sini");
     }
   }, [isSuccess, detailData]);
 

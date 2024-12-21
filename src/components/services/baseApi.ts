@@ -1,13 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  keepPreviousData,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 import axios from "axios";
 import { CreateEditPartials, TablePartials } from "../types/types";
 import { getCookie } from "../helper/cookie";
 
 const url = "https://gorest.co.in";
-
-const getToken = getCookie("token");
 
 const api = axios.create({
   baseURL: url,
@@ -15,6 +18,8 @@ const api = axios.create({
 
 api.interceptors.request.use(
   async (config) => {
+    const getToken = getCookie("token");
+
     if (getToken) {
       config.headers["Authorization"] = `Bearer ${getToken}`;
     }
@@ -34,7 +39,6 @@ export const useLoginGorest = ({
   const mutation = useMutation({
     mutationFn: async (token: string) => {
       const res = await axios.get(`/api/auth/login?access-token=${token}`);
-
       return res;
     },
     onSuccess: () => {
@@ -71,9 +75,13 @@ export const useGetListTable = (payload: TablePartials) => {
   const query = useQuery({
     placeholderData: keepPreviousData,
     queryFn: async () => {
-      const res = await api.get(
-        `/public/v2/users/7593932/posts?page=${payload.page}&per_page=${payload.per_page}`
-      );
+      const res = await api.get(`/public/v2/users/7593932/posts`, {
+        params: {
+          page: payload.page,
+          per_page: payload.per_page,
+          // title: payload.title,
+        },
+      });
       return res.data;
     },
     queryKey: ["list-table", payload],
@@ -137,15 +145,15 @@ export const useDeleteData = ({
   onSuccess = (res: any) => {},
   onError = (err: any) => {},
 }) => {
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: async (id: number) => {
       const res = await api.delete(`/public-api/posts/${id}`);
-      
+
       return res?.data;
     },
     onSuccess: (res) => {
-      queryClient.invalidateQueries({ queryKey: ['list-table']});
+      queryClient.invalidateQueries({ queryKey: ["list-table"] });
       onSuccess(res);
     },
     onError: (err: any) => {

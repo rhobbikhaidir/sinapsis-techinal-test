@@ -33,6 +33,7 @@ export type LoginPartials = {
 export type TablePartials = {
   page: number;
   per_page: number;
+  title?: string;
 };
 
 export type dataTableProps = {
@@ -56,5 +57,5 @@ export type CreateEditPartials = {
   title: string;
   body: string;
   user_id?: number;
-  id?: number
+  id?: number;
 };
