@@ -25,7 +25,8 @@ const useHome = () => {
     setTempTitle(val);
   };
 
-  const onFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onFilter = (e: any) => {
     e.preventDefault();
     const val = tempTitle?.trim()
     setTitle(val);

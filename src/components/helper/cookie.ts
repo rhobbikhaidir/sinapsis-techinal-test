@@ -5,11 +5,6 @@ export function getCookie(key: string) {
 }
 
 
-export function setCookie(key:string, value: string, options: any) {
-  return Cookies.set(key, value, options);
-}
-
-
 export function removeCookie(key: string) {
   return Cookies.remove(key);
 }
