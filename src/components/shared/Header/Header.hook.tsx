@@ -2,20 +2,25 @@ import { getCookie } from "@/components/helper/cookie";
 import { useLogoutGorest } from "@/components/services/baseApi";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import Swal from "sweetalert2";
 
 const useHeader = () => {
-  const [user, setUser] = useState<string | null>("");
+  // const [user, setUser] = useState<string | null>("");
   const { theme, setTheme } = useTheme();
   const router = useRouter();
+  const newUser = getCookie("user");
 
-  useEffect(() => {
-    const newUser = getCookie("user") || "";
-    if (newUser) {
-      setUser(newUser);
-    }
-  }, []);
+
+  const user = useMemo(() => {
+    return newUser;
+  }, [newUser]);
+  // useEffect(() => {
+  //   const newUser = getCookie("user") || "";
+  //   if (newUser) {
+  //     setUser(newUser);
+  //   }
+  // }, []);
 
   const { mutate } = useLogoutGorest({
     onSuccess: () => {
