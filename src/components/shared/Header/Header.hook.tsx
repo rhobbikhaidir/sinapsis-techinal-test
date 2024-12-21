@@ -1,3 +1,4 @@
+import { getCookie } from "@/components/helper/cookie";
 import { useLogoutGorest } from "@/components/services/baseApi";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
@@ -10,8 +11,8 @@ const useHeader = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const newUser = localStorage.getItem("user");
+    const newUser = getCookie("user") || "";
+    if (newUser) {
       setUser(newUser);
     }
   }, []);

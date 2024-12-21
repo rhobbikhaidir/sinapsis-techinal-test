@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { DEFAULT_VALUES_LOGIN } from "./Login.constants";
 import { validationSchema } from "./Login.schema";
 import Swal from "sweetalert2";
+import { setCokie } from "@/components/helper/cookie";
 
 const useLogin = () => {
   const router = useRouter();
@@ -14,7 +15,7 @@ const useLogin = () => {
   const { mutate, isPending: isLoading } = useLoginGorest({
     onSuccess: () => {
       router.replace("/");
-      localStorage.setItem("user", user);
+      setCokie('user', user)
     },
     onError: (err) => {
       Swal.fire({
