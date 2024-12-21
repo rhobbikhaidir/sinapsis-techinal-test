@@ -79,7 +79,7 @@ export const useGetListTable = (payload: TablePartials) => {
         params: {
           page: payload.page,
           per_page: payload.per_page,
-          // title: payload.title,
+          title: payload.title,
         },
       });
       return res.data;
