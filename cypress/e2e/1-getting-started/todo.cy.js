@@ -24,7 +24,7 @@ describe("Login Kur", () => {
     // We use the `cy.get()` command to get all elements that match the selector.
     // Then, we use `should` to assert that there are two matched items,
     // which are the two default items.
-    cy.get("#username").type("jasingan jaya jaya jaya");
+    cy.get("#username").type("userTesting");
     cy.get("#token").type(
       "501cfe77403484ec9e822599a05cb068993fa482daa540c9c03f2428254942a2"
     );
